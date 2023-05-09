@@ -1,26 +1,26 @@
-import React from "react";
+import { Itarefa } from '../../types/tarefa';
+import Item from './Item'
 import style from './lista.module.scss'
 
-function Lista() {
-    const tarefas = [{
-        tarefa: 'React',
-        tempo: '02:00:00'
-    }, {
-        tarefa: 'Typescript',
-        tempo: '02:00:00'
-    }, {
-        tarefa: 'Javascript',
-        tempo: '03:00:00'
-    }]
+interface Props {
+    tarefas: Itarefa[],
+    //jeito de tipar uma função:
+    selecionaTarefa: (tarefaSeleciondada: Itarefa) => void //uma função que espera o chamado tarefaSelecionada e não retorna nada 
+}
+
+function Lista({ tarefas, selecionaTarefa }: Props) { //dizer que vai pegar o tarefas e que esse props tem um tarefas que ele é um array de tarefa
+//function Lista({ tarefas }: {tarefas: Array<Itarefa>}) também é possivel fazer por este meio 
     return (
+        
         <aside className={style.listaTarefas}>
             <h2>Estudos do dia</h2>
             <ul>
-                {tarefas.map((item, index) => (
-                    <li key={index} className={style.item}>
-                        <h3>{item.tarefa}</h3>
-                        <span>{item.tempo}</span>
-                    </li>
+                {tarefas.map((item) => (
+                    <Item 
+                    selecionaTarefa = {selecionaTarefa}
+                    key={item.id} //uma forma do react linkar o item no virtual DOM para o DOM real
+                    {...item}
+                    />
                 ))}
             </ul>
         </aside>
