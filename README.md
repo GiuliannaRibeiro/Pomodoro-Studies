@@ -1,3 +1,6 @@
+# Pomodoro-Studies
+A study stopwatch, which can add tasks, and when the stopwatch timer ends, it marks the task as done.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
