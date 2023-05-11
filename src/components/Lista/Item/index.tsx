@@ -15,9 +15,11 @@ export default function item({ //conseguimos exportar a função assim que criam
 }: Props) {
   return (
     <li
-      className={`${style.item} ${selecionado ? style.itemSelecionado : ''}`} //condicional: se ele estiver selecionado retorna tyle.itemSelecionado, e se não estiver retorna nada, uma string vazia
+      className={`${style.item} ${selecionado ? style.itemSelecionado : ''}
+      ${completado ? style.itemCompletado : ''}`} //condicional do itemselecionado: se ele estiver selecionado retorna tyle.itemSelecionado, e se não estiver retorna nada, uma string vazia
       onClick={() =>
-        selecionaTarefa({
+        !completado && selecionaTarefa(
+        {
           tarefa,
           tempo,
           selecionado,
@@ -28,6 +30,8 @@ export default function item({ //conseguimos exportar a função assim que criam
     >
       <h3>{tarefa}</h3>
       <span>{tempo}</span>
+      {completado && <span className={style.concluido}
+      aria-label="Tarefa completada" ></span>}
     </li>
   );
 }
