@@ -7,13 +7,13 @@ import {v4 as uuidv4} from 'uuid';
 class Formulario extends React.Component <{
     setTarefas: React.Dispatch<React.SetStateAction<Itarefa[]>>
 }> {
-    state = { //reseta o formulário após escrever algo
+    state = {
         tarefa: "",
         tempo: "00:00"
     }
 
-    adicionarTarefa(evento: React.FormEvent<HTMLFormElement>){ //essa é a forma de criar uma função dentro de um class component, o react e o HTML se lêem: que ele é um evento de formulário vindo de uma tag formulário do HTML padrão mesmo, essa é a forma de tipar um evento de formulário
-        evento.preventDefault(); //vem do JS, e é usado para não recarregar automaticamente a página
+    adicionarTarefa(evento: React.FormEvent<HTMLFormElement>){ 
+        evento.preventDefault(); 
         this.props.setTarefas(tarefasAntigas => 
             [
                 ...tarefasAntigas, 
