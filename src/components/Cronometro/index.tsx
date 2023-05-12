@@ -19,10 +19,6 @@ export default function Cronometro({ selecionado, finalizarTarefa }: Props) {
       setTempo(tempoParaSegundos(selecionado.tempo));
     }
   }, [selecionado]);
-  //o primeiro parâmetro é uma função, que vai ser executada quando alguma coisa mudar, esse é o primeiro parametro que o useEffect aceita
-  //o segundo parametro é um array de dependencias
-  //o array de dependencias são todas as dependencias que a gente quer,variaveis que a gente quer,
-  //que o useEffect utilize como base para ele executar essa função
   
   function regressiva (contador: number = 0) {
     setTimeout(() => {
@@ -40,7 +36,7 @@ export default function Cronometro({ selecionado, finalizarTarefa }: Props) {
       <div className={style.relogioWrapper}>
         <Relogio tempo={tempo}/>
       </div>
-      <Botao onClick={() => regressiva(tempo)}> {/* como esse componente é customizado, não espera necessariamente esses defaults, e sim somente o key, então é preciso tipar o onClick*/}
+      <Botao onClick={() => regressiva(tempo)}>
         Começar
       </Botao>
     </div>
